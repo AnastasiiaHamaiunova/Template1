@@ -5,8 +5,8 @@
 
 body {
   margin: 0 auto;
-  padding: 40px;
   width: 1027px;
+  padding: 40px;
   background-color: #fff;
   font-family: Arial, Helvetica, sans-serif; }
 
@@ -26,6 +26,7 @@ body {
   align-content: center; }
 
 .logo {
+  cursor: pointer;
   width: 176px;
   height: 40px;
   background: url(images/877d981afa3c14485c57721e6708c780.png) no-repeat;
@@ -51,10 +52,22 @@ body {
   .header_nav_sub_list {
     height: 91px;
     width: 145px;
-    display: none;
+    visibility: hidden;
     position: absolute;
-    transition: opacity 1s ease-out;
-    opacity: 0; }
+    margin-left: -100%;
+    opacity: 0;
+    transition: opacity 1s ease-out; }
+    .header_nav_sub_list:before {
+      position: relative;
+      top: 0;
+      left: calc(50% - 5px);
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 4.5px 3px 4.5px;
+      border-color: transparent transparent #272626 transparent; }
     .header_nav_sub_list_item {
       color: #848c94;
       font-size: 12px;
@@ -64,26 +77,26 @@ body {
       background-color: #272626;
       position: relative;
       transition: color 0.6s; }
-      .header_nav_sub_list_item:before {
-        position: absolute;
-        top: 25px;
-        right: 145px;
-        content: "";
-        display: block;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 4.5px 0 4.5px 3px;
-        border-color: transparent transparent transparent #272626;
-        margin-bottom: -9px; }
       .header_nav_sub_list_item:hover {
         color: #fff; }
+        .header_nav_sub_list_item:hover:before {
+          position: absolute;
+          top: 10px;
+          right: -100%;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 4.5px 0 4.5px 3px;
+          border-color: transparent transparent transparent #272626; }
   .header_nav .sub_list_third_level {
     position: absolute;
     height: 91px;
     width: 145px;
     display: none;
-    left: 150px;
+    opacity: 0;
+    left: 155px;
     top: 0; }
     .header_nav .sub_list_third_level_item {
       color: #848c94;
@@ -95,13 +108,14 @@ body {
         color: #fff; }
 
 .header_nav_item:hover .header_nav_sub_list {
-  display: block;
-  opacity: 1; }
+  opacity: 1;
+  visibility: visible; }
 
 .header_nav_sub_list:hover {
   color: #fff; }
 
 .header_nav_sub_list_item:hover .sub_list_third_level {
+  opacity: 1;
   display: block; }
 
 .sub_list_third_level:hover {
@@ -165,18 +179,6 @@ main {
 .custom_menu {
   width: 245px;
   border-right: 1px solid #f1f1f0; }
-  .custom_menu_item:active:after {
-    position: relative;
-    top: -25px;
-    right: -245px;
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    margin-bottom: -9px;
-    border-style: solid;
-    border-width: 4.5px 0 4.5px 3px;
-    border-color: transparent transparent transparent #ae3b44; }
   .custom_menu_item a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -190,6 +192,18 @@ main {
     .custom_menu_item a:active {
       background-color: #ae3b44;
       color: white; }
+      .custom_menu_item a:active:after {
+        position: relative;
+        top: -25px;
+        right: -100%;
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        margin-bottom: -9px;
+        border-style: solid;
+        border-width: 4.5px 0 4.5px 3px;
+        border-color: transparent transparent transparent #ae3b44; }
   .custom_menu_sub {
     position: relative;
     left: 0;
@@ -279,7 +293,7 @@ section {
   line-height: 1.5;
   padding: 0 0 30px 0;
   border-bottom: 1px solid #f1f1f0; }
-  .text_article_img {
+  .text_article_img img {
     border-bottom: 7px black solid; }
   .text_article .main {
     display: block;
@@ -342,6 +356,7 @@ section {
   color: #f8f8f8;
   height: 175px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between; }
   .footer_quick_link, .footer_security_privacy {
     margin: 26px 0 26px 0;

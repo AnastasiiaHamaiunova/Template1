@@ -7,8 +7,8 @@ $body-bg-color: #fff;
 }
 body{
 		margin:0 auto;
-		padding: 40px;
 		width: 1027px;
+		padding: 40px;
 		background-color:#fff; 
 		font-family:Arial, Helvetica, sans-serif;
 }
@@ -29,6 +29,7 @@ body{
 	align-content: center;
 }
 .logo{
+	cursor: pointer;
     width: 176px;
     height: 40px;
     background: url('../images/openlogic.png') no-repeat;
@@ -59,10 +60,24 @@ body{
 		&_sub_list{
 			height: 91px;
 			width: 145px;
-			display:none;
+			visibility: hidden;
 			position: absolute;
+			margin-left:-100%;
+			opacity:0;
 			transition: opacity 1s ease-out;
-			opacity: 0;
+			
+			&:before{
+				position: relative;
+				top:0;
+				left:calc(50% - 5px);
+				content: "";
+				display:block;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 4.5px 3px 4.5px;
+				border-color: transparent transparent #272626 transparent;
+			}
 
 				&_item{
 					color: #848c94;
@@ -72,22 +87,21 @@ body{
 					border-bottom: 1px solid #232525; 
 					background-color: #272626;
 					position: relative;
-					transition: color 0.6s;
-					&:before{
-						position: absolute;
-						top:25px;
-						right:145px;
-						content: "";
-						display:block;
-						width: 0;
-						height: 0;
-						border-style: solid;
-						border-width: 4.5px 0 4.5px 3px;
-						border-color: transparent transparent transparent #272626;
-						margin-bottom: -9px;
-				}
+					transition: color 0.6s;					
 						&:hover{
 							color:#fff;
+							&:before{
+								position: absolute;
+								top:10px;
+								right:-100%;
+								content: "";
+								display:block;
+								width: 0;
+								height: 0;
+								border-style: solid;
+								border-width: 4.5px 0 4.5px 3px;
+								border-color: transparent transparent transparent #272626;
+						}
 						}
 				}
 		}
@@ -96,7 +110,8 @@ body{
 	height: 91px;
 	width: 145px;    
 	display: none;
-	left:150px;
+	opacity:0;
+	left:155px;
 	top:0;
 		&_item{
 			color: #848c94;
@@ -111,14 +126,15 @@ body{
 		}
 	}
 .header_nav_item:hover .header_nav_sub_list{
-		display:block;
-		opacity: 1;
+	opacity: 1;	
+	visibility: visible;	
 	}
 .header_nav_sub_list:hover{
     color:#fff;
 }
 .header_nav_sub_list_item:hover .sub_list_third_level{
-    display:block;
+	opacity: 1;	
+	display:block;
 }
 .sub_list_third_level:hover
 {
@@ -193,25 +209,10 @@ main{
     width: 245px;
 		border-right: 1px solid #f1f1f0;
 			&_item {
-				&:active{
-				&:after{
-					position: relative;
-					top:-25px;
-					right: -245px;
-					content: "";
-					display:block;			
-					width: 0;
-					height: 0;
-					margin-bottom: -9px;
-					border-style: solid;
-					border-width: 4.5px 0 4.5px 3px;
-					border-color: transparent transparent transparent #ae3b44;			
-				}
-			}
 				a{
 					font-family: Arial, Helvetica, sans-serif;
 					font-size: 12px;
-					padding: 13px;
+					padding: 13px ;
 					width: 219px;
 					border-bottom: 1px solid #f1f1f0;
 					cursor: pointer;
@@ -220,6 +221,19 @@ main{
 							color:#ae3b44;
 						}
 						&:active{
+							&:after{
+								position: relative;
+								top:-25px;
+								right: -100%;
+								content: "";
+								display:block;			
+								width: 0;
+								height: 0;
+								margin-bottom: -9px;
+								border-style: solid;
+								border-width: 4.5px 0 4.5px 3px;
+								border-color: transparent transparent transparent #ae3b44;			
+							}
 							background-color: #ae3b44;    
 							color:white;
 						}
@@ -323,9 +337,8 @@ section{
     font-size: 12px;
     line-height: 1.5;
     padding: 0 0 30px 0;
-		border-bottom: 1px solid #f1f1f0;
-		
-		&_img{
+	border-bottom: 1px solid #f1f1f0;		
+		&_img img{
 			border-bottom: 7px black solid;
 		}
 		.main{
@@ -380,9 +393,9 @@ section{
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: flex-end;
-    border-bottom: 1px solid #f1f1f0;
+    	border-bottom: 1px solid #f1f1f0;
 		border-top: 1px solid #f1f1f0;			
-			a{
+			a{	
 				font-size: 18px;
 				text-decoration: none;
 				color:black;
@@ -402,6 +415,7 @@ section{
     color:#f8f8f8;
 		height: 175px;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 			&_quick_link,
 			&_security_privacy{
