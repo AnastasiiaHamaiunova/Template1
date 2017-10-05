@@ -255,7 +255,12 @@ main{
 				display: block;
 				padding: 13px;
 				border-bottom: 1px solid #f1f1f0;
+				&:hover{
+					color:#ae3b44;
+				}
 				&:active{
+					color:#fff;
+					background-color: #ae3b44;
 					&:after{
 						position: absolute;
 						top:13px;
@@ -270,9 +275,7 @@ main{
 						border-color: transparent transparent transparent #ae3b44;			
 					}
 				}
-				&:hover{
-					color:#ae3b44;
-				}
+				
 			}				
 		}			
 		&_sub {

@@ -218,18 +218,21 @@ main {
     border-bottom: 1px solid #f1f1f0; }
     .custom_menu_item a:hover {
       color: #ae3b44; }
-    .custom_menu_item a:active:after {
-      position: absolute;
-      top: 13px;
-      right: -3px;
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      margin-bottom: -9px;
-      border-style: solid;
-      border-width: 4.5px 0 4.5px 3px;
-      border-color: transparent transparent transparent #ae3b44; }
+    .custom_menu_item a:active {
+      color: #fff;
+      background-color: #ae3b44; }
+      .custom_menu_item a:active:after {
+        position: absolute;
+        top: 13px;
+        right: -3px;
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        margin-bottom: -9px;
+        border-style: solid;
+        border-width: 4.5px 0 4.5px 3px;
+        border-color: transparent transparent transparent #ae3b44; }
   .custom_menu_sub {
     position: relative;
     left: 0;
