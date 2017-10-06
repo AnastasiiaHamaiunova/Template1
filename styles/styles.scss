@@ -12,9 +12,10 @@ body{
 	max-width: 1027px;
 	background-color:#fff; 
 	font-family:Arial, Helvetica, sans-serif;
-	@media screen and (max-width: 786px){
-		padding:10px;
-	}
+		@media screen and (max-width: 768px){
+			padding: 10px;
+		}
+	
 }
 .background_image{
 	position: absolute;
@@ -32,13 +33,14 @@ body{
 	justify-content: space-between;
 	align-items: center;
 	margin-top:20px;
+	flex-wrap: wrap;
 }
 .logo{
 	cursor: pointer;
 	max-width: 176px;
 	height: auto;
 	background: url('../images/openlogic.png') no-repeat;
-		@media screen and (max-width: 786px){
+		@media screen and (max-width: 768px){
 			display: block;
 			margin: 0 auto;
 		}
@@ -46,10 +48,6 @@ body{
 .header_nav{
 	font-size:13px;
 	z-index:150;
-	@media screen and (max-width: 786px){
-		display: block;
-		margin: 0 auto;
-	}
 	&_item{
 		float: left;
 		margin-right:25px;
@@ -166,8 +164,7 @@ body{
 	opacity: 1;	
 	visibility: visible;	
 }
-.sub_list_third_level:hover
-{
+.sub_list_third_level:hover{
     display:block;
 }
 
@@ -177,7 +174,11 @@ body{
 	width: 100%;
 	overflow: hidden;
 	position: relative;
-
+	transition: visibility 3s ease-in-out;
+	@media screen and (max-width: 768px){
+		display:none;
+}
+	
 		&_item{ 
 			margin:0;
 			max-width: 1027px;
@@ -239,13 +240,16 @@ body{
 
 main{
 	display:flex;
-	justify-content: space-between;}
+	justify-content: space-between;
+		@media screen and (max-width: 816px){
+			flex-wrap: wrap;
+		}		
+	}
 /* CUSTOM MENU*/
 .custom_menu{
-		min-width: 245px;
-		width: 100%;
-		border-right: 1px solid #f1f1f0;
-		
+	min-width: 245px;
+	width: 100%;
+	border-right: 1px solid #f1f1f0;			
 		&_item {
 			a{
 				position: relative;
@@ -257,6 +261,11 @@ main{
 				border-bottom: 1px solid #f1f1f0;
 				&:hover{
 					color:#ae3b44;
+					.custom_menu_item_toggle{
+						width: 7px;
+						height: 7px;
+						background: url('../images/arrow_menu_down.png') no-repeat;
+					}
 				}
 				&:active{
 					color:#fff;
@@ -275,8 +284,15 @@ main{
 						border-color: transparent transparent transparent #ae3b44;			
 					}
 				}
-				
-			}				
+			}	
+			&_toggle{
+				display: block;
+				background: url('../images/arrow_menu.png') no-repeat;
+				width: 7px;
+				height: 7px;
+				float: right;	
+				align-self: center;	
+			}			
 		}			
 		&_sub {
 			position: relative;
@@ -287,17 +303,20 @@ main{
 		&_sub-item a{
 				position: relative;
 				font-size: 12px;
-				padding: 13px 0 13px 40px;
+				padding: 13px 13px 13px 40px;
 				background-color: #f4f7f8;
 				border-bottom: 1px solid #f1f1f0;
 		}
 		&_third_level{
 			display: none;
 				a{
-					padding: 13px 0 13px 60px;
+					padding: 13px 0 13px 40px;
 					position: relative;
 					background-color: #eaeaea;
 				}
+				.custom_menu_item_toggle{
+					float: left;
+					padding-right: 10px;				}
 		}
 		&_header{
 			font-size: 18px;
@@ -357,6 +376,11 @@ main{
 .content{
 	text-align: justify;
 	margin-left: 36px;
+	@media screen and (max-width: 768px){
+		padding-top:15px;
+		margin-left: 0;
+	}	
+	
 }
 section{
 	padding-right: 26px;
@@ -513,4 +537,3 @@ section{
 					cursor: pointer;
 				}			
 			}
-
