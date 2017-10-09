@@ -88,44 +88,37 @@
     childButton.style.background = 'transparent';
     childButton.addEventListener('click', childElement);
 
-    function search(e){
-      collection = document.querySelectorAll(searchInput.value);
-      collection[0].style.border = '1px solid red';
-      console.log(collection);
-    }
-
-    function nextElement(){
-      ++index;
-      if(index<collection.length-1){
-        element = collection[index];
-        element.style.border = '1px solid red';
-        console.log(element);
-      }      
-    }
-
-    function prevElement(){
-      --index;
-      if(index>0){
-        element = collection[index];
-        element.style.border = '1px solid red';
-        console.log(element);
-      }   
-      else{
-        console.log('This element is not exist');
-      }   
-    }
-
-    function parentElement(){
-      element = collection[index];
-      element = element.parentElement;
+    function search(){
+      element = document.querySelector(searchInput.value);;
       element.style.border = '1px solid red';
       console.log(element);
     }
 
-    function childElement(){
-      element.children[0].style.border = '1px solid red';
+    function nextElement(){
+      element.style.border = 'none';
+      element = element.nextElementSibling;
+      element.style.border = '1px solid red';
+      console.log(element);
     }
 
+    function prevElement(){
+      element.style.border = 'none';
+      element = element.previousElementSibling;
+      element.style.border = '1px solid red';
+      console.log(element); 
+    }
+    function parentElement(){
+      element.style.border = 'none';
+      element = element.parentElement;
+      element.style.border = '1px solid red';
+      console.log(element);
+    }
+    function childElement(){
+      element.style.border = 'none';
+      element = element.children[0];
+      element.style.border = '1px solid red';
+      console.log(element);
+    }
     document.body.appendChild(mainWindow);
     mainWindow.appendChild(searchInput);
     mainWindow.appendChild(searchButton);
