@@ -11,11 +11,7 @@ body{
 	width: 100%;
 	max-width: 1027px;
 	background-color:#fff; 
-	font-family:Arial, Helvetica, sans-serif;
-		@media screen and (max-width: 768px){
-			padding: 10px;
-		}
-	
+	font-family:Arial, Helvetica, sans-serif;	
 }
 .background_image{
 	position: absolute;
@@ -25,11 +21,13 @@ body{
 	height: 100%;
 	width: 100%;
 	max-width: 1027px;
-	opacity: 0.1;
+	opacity: 0.9;
 	z-index: -1;
 }
 .header{
 	display: flex;
+	width: 100%;
+	max-width: 1027px;
 	justify-content: space-between;
 	align-items: center;
 	margin-top:20px;
@@ -40,14 +38,11 @@ body{
 	max-width: 176px;
 	height: auto;
 	background: url('../images/openlogic.png') no-repeat;
-		@media screen and (max-width: 768px){
-			display: block;
-			margin: 0 auto;
-		}
 }
 .header_nav{
 	font-size:13px;
 	z-index:150;
+	align-self: center;
 	&_item{
 		float: left;
 		margin-right:25px;
@@ -434,11 +429,9 @@ section{
 			}
 			.prev{
 				margin-right: 20px;				
-				background: url('../images/arrow_left.png') no-repeat;
 			}
 			.next{
 				margin-left: 20px;
-				background: url('../images/arrow_right.png') no-repeat;
 			}
 			
 }
@@ -485,7 +478,7 @@ section{
 						}
 					}					
 				}
-				&_item{
+				&_item a{
 					font-size: 12px;
 					line-height: 1.5;
 					color: #dedede;
@@ -495,7 +488,7 @@ section{
 				}
 			}
 			&_social{
-				margin: 26px 30px;
+				margin: 26px 0 26px 30px;
 				color:#b0b0b0;
 				ul{
 					display: flex;
@@ -512,18 +505,6 @@ section{
 							cursor: pointer;
 						}
 					}
-					.twitter{
-						background-image: url('../images/twitter.png');
-					}
-					.facebook{
-							background-image: url('../images/facebook.png');
-					}
-					.linkedin{
-							background-image: url('../images/linkedin.png');
-					}
-					.rss{
-							background-image: url('../images/rss.png');
-					}
 				}
 				p:last-child{
 					margin-top: 26px;
@@ -534,6 +515,7 @@ section{
 					margin-bottom: 26px;
 				}	
 				a{
+					color:#b0b0b0;
 					cursor: pointer;
 				}			
 			}
