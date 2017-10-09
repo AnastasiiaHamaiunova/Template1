@@ -36,7 +36,7 @@
     searchInput.style.margin = '15px 10px';
     searchInput.style.color = '#fff';
     searchInput.style.background = 'transparent';
-
+    
     var searchButton = document.createElement('button');
     var textSearchButton = document.createTextNode('Search');
     searchButton.style.width = '80px';
@@ -47,16 +47,6 @@
     searchButton.style.background = 'transparent';
     searchButton.addEventListener('click', search);
 
-    var nextButton = document.createElement('button');
-    var textNextButton = document.createTextNode('Next');
-    nextButton.style.width = '50px';
-    nextButton.style.height = '25px';
-    nextButton.style.margin = '15px 5px';
-    nextButton.style.color = 'white';
-    nextButton.style.border = '1px solid grey';
-    nextButton.style.background = 'transparent';
-    nextButton.addEventListener('click', nextElement);
-
     var prevButton = document.createElement('button');
     var textPrevButton = document.createTextNode('Prev');
     prevButton.style.width = '50px';
@@ -66,6 +56,16 @@
     prevButton.style.border = '1px solid grey';
     prevButton.style.background = 'transparent';
     prevButton.addEventListener('click', prevElement);
+
+    var nextButton = document.createElement('button');
+    var textNextButton = document.createTextNode('Next');
+    nextButton.style.width = '50px';
+    nextButton.style.height = '25px';
+    nextButton.style.margin = '15px 5px';
+    nextButton.style.color = 'white';
+    nextButton.style.border = '1px solid grey';
+    nextButton.style.background = 'transparent';
+    nextButton.addEventListener('click', nextElement);
 
     var parentButton = document.createElement('button');
     var textParentButton = document.createTextNode('Parent');
@@ -149,10 +149,10 @@
     document.body.appendChild(mainWindow);
     mainWindow.appendChild(searchInput);
     mainWindow.appendChild(searchButton);
+    mainWindow.appendChild(prevButton);
     mainWindow.appendChild(nextButton);
     mainWindow.appendChild(parentButton);
-    mainWindow.appendChild(childButton);
-    mainWindow.appendChild(prevButton);
+    mainWindow.appendChild(childButton);    
     nextButton.appendChild(textNextButton);
     searchButton.appendChild(textSearchButton);
     parentButton.appendChild(textParentButton);
