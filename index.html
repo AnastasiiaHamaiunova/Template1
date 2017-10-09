@@ -24,7 +24,7 @@
     mainWindow.style.position = 'absolute';
     mainWindow.style.top = '0px';
     mainWindow.style.right = '0px';
-    mainWindow.style.width = '400px';
+    mainWindow.style.width = '350px';
     mainWindow.style.height = '100px';
     mainWindow.style.background = '#3e3e3e';
     mainWindow.style.color = '#f5f5f5';
@@ -47,12 +47,11 @@
     searchButton.style.background = 'transparent';
     searchButton.addEventListener('click', search);
 
-
     var nextButton = document.createElement('button');
     var textNextButton = document.createTextNode('Next');
-    nextButton.style.width = '80px';
+    nextButton.style.width = '50px';
     nextButton.style.height = '25px';
-    nextButton.style.margin = '15px 10px';
+    nextButton.style.margin = '15px 5px';
     nextButton.style.color = 'white';
     nextButton.style.border = '1px solid grey';
     nextButton.style.background = 'transparent';
@@ -60,9 +59,9 @@
 
     var prevButton = document.createElement('button');
     var textPrevButton = document.createTextNode('Prev');
-    prevButton.style.width = '80px';
+    prevButton.style.width = '50px';
     prevButton.style.height = '25px';
-    prevButton.style.margin = '15px 10px';
+    prevButton.style.margin = '15px 5px';
     prevButton.style.color = 'white';
     prevButton.style.border = '1px solid grey';
     prevButton.style.background = 'transparent';
@@ -70,9 +69,9 @@
 
     var parentButton = document.createElement('button');
     var textParentButton = document.createTextNode('Parent');
-    parentButton.style.width = '80px';
+    parentButton.style.width = '50px';
     parentButton.style.height = '25px';
-    parentButton.style.margin = '15px 10px';
+    parentButton.style.margin = '15px 5px';
     parentButton.style.color = 'white';
     parentButton.style.border = '1px solid grey';
     parentButton.style.background = 'transparent';
@@ -80,45 +79,64 @@
 
     var childButton = document.createElement('button');
     var textChildButton = document.createTextNode('Child');
-    childButton.style.width = '80px';
+    childButton.style.width = '50px';
     childButton.style.height = '25px';
-    childButton.style.margin = '15px 10px';
+    childButton.style.margin = '15px 5px';
     childButton.style.color = 'white';
     childButton.style.border = '1px solid grey';
     childButton.style.background = 'transparent';
     childButton.addEventListener('click', childElement);
+    function border(elem){
+      elem.style.border = '1px solid red';
+    }
 
     function search(){
-      element = document.querySelector(searchInput.value);;
-      element.style.border = '1px solid red';
-      console.log(element);
+      element = document.querySelector(searchInput.value);
+      border(element);
+    }
+    function disableButton(button){
+      button.disabled = true;
+      button.style.color = 'grey';
     }
 
     function nextElement(){
-      element.style.border = 'none';
-      element = element.nextElementSibling;
-      element.style.border = '1px solid red';
-      console.log(element);
+      if(element.nextElementSibling){
+        element.style.border = 'none';
+        element = element.nextElementSibling;
+        border(element);
+        console.log(element);
+      }else{
+        disableButton(nextButton);
+      }      
     }
 
     function prevElement(){
-      element.style.border = 'none';
-      element = element.previousElementSibling;
-      element.style.border = '1px solid red';
-      console.log(element); 
+      if(element.previousElementSibling != null){
+        element.style.border = 'none';
+        element = element.previousElementSibling;
+        border(element);
+      }else{
+        disableButton(prevButton);
+      }        
     }
+
     function parentElement(){
       element.style.border = 'none';
       element = element.parentElement;
-      element.style.border = '1px solid red';
-      console.log(element);
+      border(element);
     }
+
     function childElement(){
-      element.style.border = 'none';
-      element = element.children[0];
-      element.style.border = '1px solid red';
-      console.log(element);
+      if(element.children.length>0){
+        element.style.border = 'none';
+        element = element.children[0];
+        border(element);
+        console.log(element);
+      }else{
+        disableButton(childButton);
+      }      
     }
+
     document.body.appendChild(mainWindow);
     mainWindow.appendChild(searchInput);
     mainWindow.appendChild(searchButton);
@@ -131,9 +149,6 @@
     parentButton.appendChild(textParentButton);
     childButton.appendChild(textChildButton);
     prevButton.appendChild(textPrevButton);
-
-
-
     ">Click me</a>  
     <nav class="header_nav">
       <ul>
