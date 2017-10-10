@@ -3,14 +3,7 @@ var collection = [];
 var element = {};
 
 var mainWindow = document.createElement('div');
-mainWindow.addEventListener('mousedown', function (e){
-  mainWindow.addEventListener('mousemove',  movePanel);
-});
-mainWindow.addEventListener('mouseup', function(e){
-  mainWindow.removeEventListener('mousemove', movePanel);
-});
-
-mainWindow.className = 'main_window_nav_panel';
+mainWindow.style.cssText = 'position: absolute; top:0; right: 0; width: 300px; height: 120px; margin: 15px 10px; color:#f5f5f5; border: 1px solid grey; background: #3e3e3e; z-index:200;';
 
 function drawBorder(node) {
   if (element !== undefined) element.style.border = '';
@@ -21,46 +14,66 @@ function drawBorder(node) {
  }  
 
 function disabledButtons(){
-  !element.previousElementSibling ? prevButton.setAttribute('disabled', '')
-  : prevButton.removeAttribute('disabled', '');
+  if(!element.previousElementSibling){
+    prevButton.setAttribute('disabled', '');
+    prevButton.style.color = '#909293';
+  } else{
+    prevButton.removeAttribute('disabled', '');
+    prevButton.style.color = '#fff';
+  } 
+  if(!element.nextElementSibling){
+    nextButton.setAttribute('disabled', '');
+    nextButton.style.color = '#909293';
+  } else{
+    nextButton.removeAttribute('disabled', '');
+    nextButton.style.color = '#fff';
 
-  !element.nextElementSibling ? nextButton.setAttribute('disabled', '')
-  : nextButton.removeAttribute('disabled', '');
+  }
+  if(element.children.length == 0){
+    childButton.setAttribute('disabled', '');
+    childButton.style.color = '#909293';
+  } else{
+    childButton.removeAttribute('disabled', '');
+    childButton.style.color = '#fff';
+  }
 
-  element.children.length == 0 ? childButton.setAttribute('disabled', '')
-  : childButton.removeAttribute('disabled', '');
-
-  !element.parentElement ? parentButton.setAttribute('disabled', '')
-  : parentButton.removeAttribute('disabled', '');
+  if(!element.parentElement){
+    parentButton.setAttribute('disabled', '');
+    parentButton.style.color = '#909293';
+  } else{
+    parentButton.removeAttribute('disabled', '');
+    parentButton.style.color = '#fff';
+  }
 }
 
 var searchInput = document.createElement('input');
-searchInput.className = 'input_nav_panel';
+searchInput.style.cssText = 'width: 150px; height: 25px; margin: 15px 10px; border:1px solid grey; color:#f5f5f5; border: 1px solid grey; background: transparent;';
 
 var searchButton = document.createElement('button');
 searchButton.textContent = 'Search';  
-searchButton.className = 'button_nav_panel';
 searchButton.addEventListener('click', search);
+searchButton.style.cssText = 'width: 50px; height: 25px; margin: 15px 10px; color:white; border: 1px solid grey; background: transparent;';
 
 var prevButton = document.createElement('button');
 prevButton.textContent = 'Prev';
-prevButton.className = 'button_nav_panel';
 prevButton.addEventListener('click', prevElement);
+prevButton.style.cssText = 'width: 50px; height: 25px; margin: 15px 10px; color:white; border: 1px solid grey; background: transparent;';
 
 var nextButton = document.createElement('button');
 nextButton.textContent = 'Next'; 
-nextButton.className = 'button_nav_panel';
 nextButton.addEventListener('click', nextElement);
+nextButton.style.cssText = 'width: 50px; height: 25px; margin: 15px 10px; color:white; border: 1px solid grey; background: transparent;';
 
 var parentButton = document.createElement('button');
 parentButton.textContent = 'Parent';
-parentButton.className = 'button_nav_panel';
 parentButton.addEventListener('click', parentElement);
+parentButton.style.cssText = 'width: 50px; height: 25px; margin: 15px 10px; color:white; border: 1px solid grey; background: transparent;';
+
 
 var childButton = document.createElement('button');
 childButton.textContent = 'Child'; 
-childButton.className = 'button_nav_panel';
 childButton.addEventListener('click', childElement);
+childButton.style.cssText = 'width: 50px; height: 25px; margin: 15px 10px; color:white; border: 1px solid grey; background: transparent;';
 
 function search(){
   element = document.querySelector(searchInput.value);
@@ -81,12 +94,6 @@ function parentElement(){
 
 function childElement(){
   drawBorder(element.children[0]); 
-}
-
-function dragPanel(e){
-    mainWindow.style.position = 'absolute';
-    mainWindow.style.top = e.clientY + 'px';
-    mainWindow.style.left = e.clientX + 'px';
 }
 document.body.appendChild(mainWindow);
 mainWindow.appendChild(searchInput);
